@@ -14,14 +14,21 @@ typedef struct  s_lst
   int           isEnd;
 }               t_lst;
 
-
 /*
-** list.c
+** list/
 */
-t_lst *create_node(void);
+
+t_lst *initialize_list(int argc, char **argv);
 t_lst *create_head(char *value);
+t_lst *create_node(void);
 void  append_node(t_lst *head, t_lst *tail, char *value);
 void  display_list(t_lst *head);
-t_lst *initialize_list(int argc, char **argv);
+
+
+/*
+** termcap/
+*/
+
+int get_term_data(void);
 
 #endif

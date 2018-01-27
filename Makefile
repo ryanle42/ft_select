@@ -10,12 +10,17 @@ OBJS = $(addprefix ./srcs/, \
 						display_list \
 						initialize_list \
 					) \
+					$(addprefix termcap/, \
+						get_term_data \
+					) \
 				) \
 			)
 
 CFLAGS = -Wall -Werror -Wextra
 
 CC = @gcc
+
+LINKER = -ltermcap
 
 INCLUDES = -I ./includes -I ./libft/includes
 
@@ -24,7 +29,7 @@ LIB = libft
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIB)/libft.a $(INCLUDES) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIB)/libft.a $(INCLUDES) -o $(NAME) $(LINKER)
 	@echo "\x1B[31mft_select made"
 
 %.o: %.c
